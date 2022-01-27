@@ -8,13 +8,13 @@ class PlanetsResponse {
   late final int count;
   late final String next;
   late final Null previous;
-  late final List<Results> results;
+  late final List<Planet> results;
   
   PlanetsResponse.fromJson(Map<String, dynamic> json){
     count = json['count'];
     next = json['next'];
     previous = null;
-    results = List.from(json['results']).map((e)=>Results.fromJson(e)).toList();
+    results = List.from(json['results']).map((e)=>Planet.fromJson(e)).toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -27,8 +27,8 @@ class PlanetsResponse {
   }
 }
 
-class Results {
-  Results({
+class Planet {
+  Planet({
     required this.name,
     required this.rotationPeriod,
     required this.orbitalPeriod,
@@ -59,7 +59,7 @@ class Results {
   late final String edited;
   late final String url;
   
-  Results.fromJson(Map<String, dynamic> json){
+  Planet.fromJson(Map<String, dynamic> json){
     name = json['name'];
     rotationPeriod = json['rotation_period'];
     orbitalPeriod = json['orbital_period'];
