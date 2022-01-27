@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const (),
+      home: const ListsPage(),
     );
   }
 }
@@ -36,7 +36,7 @@ class _ListsPageState extends State<ListsPage> {
           Container(
             child: ListView(
               children: [
-                
+
               ],
             ),
           ),
