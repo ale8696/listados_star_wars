@@ -79,15 +79,24 @@ class _ListsPageState extends State<ListsPage> {
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
         itemBuilder: (context, index) {
-          return _planetItem(list.elementAt(index));
+          return _planetItem(list.elementAt(index), index);
         }
       ),
     );
   }
 
-  Widget _planetItem(Planet planet) {
-    return Card(
-      child: Text(planet.name),
+  Widget _planetItem(Planet planet, int index) {
+    return Container(
+      width: 200,
+      child: Card(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(planet.name),
+            Image.network('https://starwars-visualguide.com/assets/img/planets/4.jpg', width: 200)
+          ],
+        ),
+      ),
     );
   }
 
