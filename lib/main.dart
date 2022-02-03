@@ -73,12 +73,15 @@ class _ListsPageState extends State<ListsPage> {
   }
 
   Widget _itemList(List list) {
-    return ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: list.length,
-      itemBuilder: (context, index) {
-        return _planetItem(list.elementAt(index));
-      }
+    return SizedBox(
+      height: 300,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: list.length,
+        itemBuilder: (context, index) {
+          return _planetItem(list.elementAt(index));
+        }
+      ),
     );
   }
 
