@@ -47,12 +47,44 @@ class _ListsPageState extends State<ListsPage> {
       body: Column(
         children: [
           Container(
+            child: FutureBuilder<List<Planet>>(
+              future: planets,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    children: [
+                      Text('Planets'),
+                      _itemList(snapshot.data!)
+                    ],
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                return const CircularProgressIndicator();
+              }
+            )
           ),
           Container(
 
           )
         ],
       ),
+    );
+  }
+
+  Widget _itemList(List list) {
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: list.length,
+      itemBuilder: (context, index) {
+        return _planetItem(list.elementAt(index));
+      }
+    );
+  }
+
+  Widget _planetItem(Planet planet) {
+    return Card(
+      child: Text(planet.name),
     );
   }
 
