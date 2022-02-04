@@ -74,7 +74,7 @@ class _ListsPageState extends State<ListsPage> {
 
   Widget _itemList(List list) {
     return SizedBox(
-      height: 300,
+      height: 250,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
@@ -86,14 +86,28 @@ class _ListsPageState extends State<ListsPage> {
   }
 
   Widget _planetItem(Planet planet, int index) {
-    return Container(
-      width: 200,
-      child: Card(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        width: 200,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(planet.name),
-            Image.network('https://starwars-visualguide.com/assets/img/planets/4.jpg', width: 200)
+            ClipRRect(
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
+              child: Image.network(
+                'https://starwars-visualguide.com/assets/img/planets/${index + 1}.jpg',
+                height: 200,
+                fit: BoxFit.cover,
+                errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                  return Image.network(
+                    'https://starwars-visualguide.com/assets/img/placeholder.jpg',
+                    height: 200,
+                    fit: BoxFit.cover
+                  );
+                }
+              ),
+            ),
           ],
         ),
       ),
