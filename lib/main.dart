@@ -65,7 +65,7 @@ class _ListsPageState extends State<ListsPage> {
             )
           ),
           Container(
-
+            
           )
         ],
       ),
@@ -74,7 +74,6 @@ class _ListsPageState extends State<ListsPage> {
 
   Widget _itemList(List list) {
     return SizedBox(
-      height: 250,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: list.length,
@@ -88,9 +87,15 @@ class _ListsPageState extends State<ListsPage> {
   Widget _planetItem(Planet planet, int index) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: 200,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          border: Border.all(width: 3),
+          borderRadius: BorderRadius.circular(8)
+        ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisSize: MainAxisSize.min,
           children: [
             Text(planet.name),
             ClipRRect(
