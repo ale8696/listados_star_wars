@@ -1,5 +1,5 @@
-class AutoGenerate {
-  AutoGenerate({
+class PeopleResponse {
+  PeopleResponse({
     required this.count,
     required this.next,
      this.previous,
@@ -10,7 +10,7 @@ class AutoGenerate {
   late final Null previous;
   late final List<Person> results;
   
-  AutoGenerate.fromJson(Map<String, dynamic> json){
+  PeopleResponse.fromJson(Map<String, dynamic> json){
     count = json['count'];
     next = json['next'];
     previous = null;
